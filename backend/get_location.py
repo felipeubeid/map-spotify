@@ -1,9 +1,14 @@
 import requests
 from dotenv import load_dotenv
 import os
+import redis
+import json
 
 load_dotenv()
 email = os.getenv("WIKIDATA_EMAIL")
+
+# Connect to Redis
+redis_client = redis.Redis(host='localhost', port=6379, db=0, decode_responses=True)
 
 def get_location_musicbrainz(artist_name):
     search_url = "https://musicbrainz.org/ws/2/artist/"
@@ -81,24 +86,38 @@ def get_geo_info(place_name):
     }
 
 def get_artist_location(artist_name):
+    
+    # Check if the artist's location is cached in Redis
+    cached = redis_client.get(artist_name)
+    if cached:
+        return json.loads(cached)
+    
+    # If not cached, fetch artist location data
     # Get the location of an artist
     location = get_location_musicbrainz(artist_name)
     if not location:
-        return {
+        result = {
             "birthplace": None,
             "coordinates": None,
             "country": None
         }
-    # Get the coordinates for the location
-    geo_info = get_geo_info(location)
-    if not geo_info:
-        return {
-            "birthplace": location,
-            "coordinates": None,
-            "country": None
-        }
-    return {
-        "birthplace": location,
-        "coordinates": geo_info["coordinates"],
-        "country": geo_info["country"]
-    }
+    else:
+        # Get the coordinates and country for the location
+        geo_info = get_geo_info(location)
+        if not geo_info:
+            result = {
+                "birthplace": location,
+                "coordinates": None,
+                "country": None
+            }
+        else:
+            result = {
+                "birthplace": location,
+                "coordinates": geo_info["coordinates"],
+                "country": geo_info["country"]
+            }
+            
+    # Cache the result in Redis for future requests
+    # Use the artist's name as the key in Redis
+    redis_client.set(artist_name, json.dumps(result))
+    return result
