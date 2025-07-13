@@ -20,8 +20,22 @@ def home():
 def callback():
     sp, sp_oauth, cache_handler = create_spotify(session)
     
+    # Get the authorization code from the request arguments
+    code = request.args.get('code') # Code returned by Spotify after user authorization
+    error = request.args.get('error') # Error returned by Spotify if the user denied authorization
+    
+    if error:
+        # User denied the authorization or some error happened, redirect to home
+        return redirect(url_for('auth.home')) 
+    
+    if not code:
+        # No authorization code was provided, redirect to home
+        return redirect(url_for('auth.home'))
+    
     # Get the authorization code from the URL and use it to get an access token
-    sp_oauth.get_access_token(request.args['code'])
+    token_info = sp_oauth.get_access_token(code)
+    if not token_info:
+        return redirect(url_for('auth.home'))
     # After logging in, send the user to see their top artists
     return redirect(url_for('top_artists.get_top_artists'))
 

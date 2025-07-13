@@ -29,7 +29,8 @@ def get_top_artists():
             "profile_url": artist['external_urls']['spotify'],
             "image_url": artist['images'][0]['url'] if artist['images'] else None,
             "begin_area": begin_area_info.get("birthplace") if begin_area_info else None,
-            "coordinates": begin_area_info.get("coordinates") if begin_area_info else None
+            "coordinates": begin_area_info.get("coordinates") if begin_area_info else None,
+            "country": begin_area_info.get("country") if begin_area_info else None
         })
     
     return jsonify({"top_artists": artists_data})

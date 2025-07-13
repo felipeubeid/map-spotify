@@ -42,21 +42,24 @@ def get_location_musicbrainz(artist_name):
     
     return location
 
-def get_coordinates(place_name):
-    geocode_url = "https://nominatim.openstreetmap.org/search"
+def get_geo_info(place_name):
+    geo_url = "https://nominatim.openstreetmap.org/search"
     # Nominatim API endpoint to get coordinates for a place name
     params = {
         "q": place_name,
         "format": "json",
-        "limit": 1
+        "limit": 1,
+        # addressdetails is set to 1 to get detailed address information
+        "addressdetails": 1
     }
     # Setting the User-Agent header to identify the application
     headers = {
-        "User-Agent": f"MapSpotifyApp/0.1 ({email})"
+        "User-Agent": f"MapSpotifyApp/0.1 ({email})",
+        "Accept-Language": "en"
     }
     
     # Making the request to Nominatim API
-    response = requests.get(geocode_url, params=params, headers=headers)
+    response = requests.get(geo_url, params=params, headers=headers)
     # Check if the request was successful
     if response.status_code != 200:
         return None
@@ -69,7 +72,13 @@ def get_coordinates(place_name):
     # Get the first result from the search
     lat = results[0]['lat']
     lon = results[0]['lon']
-    return (lat, lon)
+    address = results[0].get('address', {}) # Get address details if available
+    country = address.get('country') # Get the country from the address details
+    
+    return {
+        "coordinates": (lat, lon),
+        "country": country
+    }
 
 def get_artist_location(artist_name):
     # Get the location of an artist
@@ -77,11 +86,19 @@ def get_artist_location(artist_name):
     if not location:
         return {
             "birthplace": None,
-            "coordinates": None
+            "coordinates": None,
+            "country": None
         }
     # Get the coordinates for the location
-    coords = get_coordinates(location)
+    geo_info = get_geo_info(location)
+    if not geo_info:
+        return {
+            "birthplace": location,
+            "coordinates": None,
+            "country": None
+        }
     return {
         "birthplace": location,
-        "coordinates": coords
+        "coordinates": geo_info["coordinates"],
+        "country": geo_info["country"]
     }
