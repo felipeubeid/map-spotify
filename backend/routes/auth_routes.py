@@ -26,16 +26,16 @@ def callback():
     
     if error:
         # User denied the authorization or some error happened, redirect to home
-        return redirect(url_for('auth.home')) 
+        return redirect("http://localhost:3000") 
     
     if not code:
         # No authorization code was provided, redirect to home
-        return redirect(url_for('auth.home'))
+        return redirect("http://localhost:3000")
     
     # Get the authorization code from the URL and use it to get an access token
     token_info = sp_oauth.get_access_token(code)
     if not token_info:
-        return redirect(url_for('auth.home'))
+        return redirect("http://localhost:3000")
     # After logging in, send the user to see their top artists
     return redirect(url_for('top_artists.get_top_artists'))
 

@@ -1,14 +1,12 @@
 import React from 'react'
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero"; 
-import Features from "../components/Features";
+import MapNavbar from "../components/MapNavbar";
+import Map from "../components/Map";
 
-const Index = () => {
+const MapPage = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <Navbar />
-      <Hero />
-      <Features />
+      <MapNavbar />
+      <Map />
       <footer className="py-8 px-6 border-t border-border">
         <div className="max-w-6xl mx-auto text-center">
           <p className="text-muted-foreground text-sm font-semibold">
@@ -23,4 +21,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default MapPage

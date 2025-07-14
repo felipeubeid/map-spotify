@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import { FaMapMarkedAlt } from "react-icons/fa";
 
-const Navbar = () => {
+const MapNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const Navbar = () => {
           <a 
           href="http://127.0.0.1:5000"
           className="text-white font-semibold cursor-pointer hover:text-muted-foreground duration-300 transition-all transform hover:scale-105">
-            Log In
+            Log Out
           </a>
         </div>
       </div>
@@ -36,4 +36,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default MapNavbar

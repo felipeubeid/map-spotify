@@ -24,7 +24,7 @@ const Features = () => {
               </h3>
             </div>
             <p className="text-muted-foreground text-large">
-              See exactly where your top artists are from on an interactive world map. Explore new regions through music.
+              See exactly where your top artists are from on an interactive world map and explore new regions through music.
             </p>
           </div>
           <div className="bg-muted/40 rounded-2xl p-6 h-full border border-border">
