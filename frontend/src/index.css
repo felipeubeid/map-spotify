@@ -4,9 +4,18 @@
 
 @layer base {
   :root {
-    --background: #121212;
-    --foreground: #ffffff;
-    --accent: #1ed760;
+    --background: 0 0% 7%;
+    --foreground: 0 0% 100%;
+
+    --green: 141 73% 50%;
+
+    --border: 210 6% 16%;
+
+    --muted: 210 6% 12%;
+    --muted-foreground: 0 0% 85%;
+
+    --accent: 210 6% 16%;
+    --accent-foreground: 0 0% 98%;
   }
   body {
     font-family: sans-serif;
