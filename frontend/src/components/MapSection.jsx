@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Loader } from 'lucide-react';
 import { toast } from 'react-toastify';
 import ArtistsTable from './ArtistsTable';
+import Map from './Map';
 
 const MapSection = () => {
   const navigate = useNavigate();
@@ -42,16 +43,22 @@ const MapSection = () => {
   }
 
   return (
-    <div className="relative min-h-screen flex overflow-hidden bg-gradient-to-b from-background to-muted/70 pt-24">
+    <section className="relative min-h-screen flex overflow-hidden hero-background pt-24">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-4xl font-bold mb-6 text-gradient">Your Spotify in a Map</h2>
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-4xl font-bold mb-4 text-gradient">Your Spotify on a Map</h2>
+          <p className="text-muted-foreground text-md">
+            Explore the global roots of your favorite artists
+          </p>
+        </div>
+        <div className="space-y-6 mb-12">
+          <Map artists={artists} />
         </div>
         <div className="space-y-6 mb-12">
           <ArtistsTable artists={artists} />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

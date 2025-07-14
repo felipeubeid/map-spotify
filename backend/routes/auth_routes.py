@@ -16,8 +16,8 @@ def home():
         # If not authenticated, redirect to Spotify's authorization page
         auth_url = sp_oauth.get_authorize_url()
         return redirect(auth_url)
-    # If authenticated, redirect to the top artists page
-    return redirect(url_for('top_artists.get_top_artists'))
+    # If authenticated, redirect to the map page
+    return redirect("http://127.0.0.1:3000/map")
 
 @auth_bp.route('/callback')
 def callback():

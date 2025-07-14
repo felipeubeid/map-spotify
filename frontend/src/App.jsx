@@ -4,6 +4,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import MapPage from "./pages/MapPage";
 import { ToastContainer } from 'react-toastify'
+import 'leaflet/dist/leaflet.css';
 
 const App = () => {
   return (

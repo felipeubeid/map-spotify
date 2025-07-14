@@ -16,6 +16,8 @@
 
     --accent: 210 6% 16%;
     --accent-foreground: 0 0% 98%;
+
+    --card: 210 6% 8%;
   }
   body {
     @apply bg-background text-foreground;

@@ -23,7 +23,7 @@ const Features = () => {
                 Geographic Discovery
               </h3>
             </div>
-            <p className="text-muted-foreground text-large">
+            <p className="text-muted-foreground text-md">
               See exactly where your top artists are from on an interactive world map and explore new regions through music.
             </p>
           </div>
@@ -34,7 +34,7 @@ const Features = () => {
                 Spotify Integration
               </h3>
             </div>
-            <p className="text-muted-foreground text-large">
+            <p className="text-muted-foreground text-md">
               Connect seamlessly with your Spotify account to analyze your listening history and top artists.
             </p>
           </div>
