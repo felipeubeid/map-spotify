@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider} from 'react-router-dom'
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import MapPage from "./pages/MapPage";
@@ -7,16 +7,20 @@ import { ToastContainer } from 'react-toastify'
 import 'leaflet/dist/leaflet.css';
 
 const App = () => {
+  // Create the router with routes
+  // Enables route-level data loading, error handling, and makes the app more scalable and maintainable
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/">
+        <Route index element={<Index />} />
+        <Route path="map" element={<MapPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    )
+  )
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/map" element={<MapPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-      
+      <RouterProvider router={router} />
       <ToastContainer 
         position="top-right" 
         autoClose={2000} 
@@ -24,8 +28,7 @@ const App = () => {
         newestOnTop 
         closeOnClick 
         pauseOnHover 
-        theme="dark"
-      />
+        theme="dark"/>
     </>
   )
 }
