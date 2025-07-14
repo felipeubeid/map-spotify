@@ -1,11 +1,10 @@
 import React from 'react'
-import { AiOutlineSpotify } from "react-icons/ai";
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-black to-muted/50">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-background to-muted/80">
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
-        <h1 className="font-playfair text-6xl md:text-8xl font-bold mb-6 animate-fade-in-up">
+        <h1 className="text-6xl md:text-8xl font-bold mb-6 animate-fade-in-up">
           Spotify Map
         </h1>
         <p className="text-xl md:text-xl text-muted-foreground">
