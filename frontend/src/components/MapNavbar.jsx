@@ -12,6 +12,17 @@ const MapNavbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleLogout = async () => {
+    try {
+      await axios.get('http://127.0.0.1:5001/logout', { withCredentials: true });
+      navigate('/'); // or wherever your login/home page is
+    } catch (error) {
+      console.error("Logout failed", error);
+      // optionally show error feedback
+    }
+  };
+
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -26,7 +37,7 @@ const MapNavbar = () => {
             <span>Map Spotify</span>
           </div>
           <a 
-          href="http://127.0.0.1:5000"
+          href="http://127.0.0.1:5001/logout"
           className="text-white font-semibold cursor-pointer hover:text-muted-foreground duration-300 transition-all transform hover:scale-105">
             Log Out
           </a>

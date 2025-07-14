@@ -26,7 +26,7 @@ const Navbar = () => {
             <span>Map Spotify</span>
           </div>
           <a 
-          href="http://127.0.0.1:5000"
+          href="http://127.0.0.1:5001"
           className="text-white font-semibold cursor-pointer hover:text-muted-foreground duration-300 transition-all transform hover:scale-105">
             Log In
           </a>

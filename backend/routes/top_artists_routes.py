@@ -1,18 +1,19 @@
 from flask import Blueprint, session, redirect, jsonify
 from spotify_auth import create_spotify
 from get_location import get_artist_location
+from flask_cors import CORS
 
 top_artists_bp = Blueprint('top_artists', __name__)
+
+CORS(top_artists_bp, supports_credentials=True, origins=["http://127.0.0.1:3000"])
 
 @top_artists_bp.route('/get_top_artists')
 def get_top_artists():
     sp, sp_oauth, cache_handler = create_spotify(session)
-
-    # Check if the user is authenticated
-    if not sp_oauth.validate_token(cache_handler.get_cached_token()):
-        # If not authenticated, redirect to Spotify's authorization page
-        auth_url = sp_oauth.get_authorize_url()
-        return redirect(auth_url)
+    
+    token_info = cache_handler.get_cached_token()
+    if not sp_oauth.validate_token(token_info):
+        return jsonify({'error': 'Unauthorized'}), 401
     
     # If authenticated, fetch the user's top artists
     results = sp.current_user_top_artists(limit=20)

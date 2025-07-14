@@ -8,7 +8,7 @@ load_dotenv()
 
 CLIENT_ID = os.getenv('SPOTIFY_CLIENT_ID')
 CLIENT_SECRET = os.getenv('SPOTIFY_CLIENT_SECRET')
-REDIRECT_URI = os.getenv('SPOTIFY_REDIRECT_URI', 'http://127.0.0.1:5000/callback')
+REDIRECT_URI = os.getenv('SPOTIFY_REDIRECT_URI', 'http://127.0.0.1:5001/callback')
 SCOPE = 'user-top-read' # Scope for reading user's top tracks and artists
 
 # Create a Spotify client with OAuth authentication
