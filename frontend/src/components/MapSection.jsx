@@ -43,8 +43,8 @@ const MapSection = () => {
   }
 
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden hero-background pt-20">
-      <div className="max-w-6xl mx-auto">
+    <section className="relative min-h-screen flex flex-col overflow-hidden hero-background pt-24">
+      <div className="w-full max-w-6xl mx-auto px-4">
         <div className="text-center mb-10">
           <h2 className="text-4xl md:text-4xl font-bold mb-4 text-gradient">Your Spotify on a Map</h2>
           <p className="text-muted-foreground text-md">
