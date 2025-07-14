@@ -40,7 +40,7 @@ def get_location_musicbrainz(artist_name):
     # Check if the artist has a begin-area or area
     location = None
     country = None
-    # If the artist has a begin-area, use that. Otherwise, use the area
+    # If the artist has a begin-area, use that as the location
     if 'begin-area' in artist and artist['begin-area']:
         location = artist['begin-area']['name']
     if 'area' in artist and artist['area']:
@@ -50,6 +50,8 @@ def get_location_musicbrainz(artist_name):
 
 def get_geo_info(place_name, country_name=None):
     geo_url = "https://nominatim.openstreetmap.org/search"
+    
+    # Construct the query based on the provided place name and country name
     if place_name and place_name.strip():
         query = place_name.strip()
         if country_name and country_name.strip():
@@ -58,6 +60,7 @@ def get_geo_info(place_name, country_name=None):
         query = country_name.strip()
     else:
         return None
+    
     # Nominatim API endpoint to get coordinates for a place name
     params = {
         "q": query,

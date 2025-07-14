@@ -23,6 +23,9 @@ const MapSection = () => {
         if (error.response && error.response.status === 401) {
           // Not authenticated, redirect to login page
           navigate('/');
+        } else if (error.response.status === 403) {
+          // Authenticated but not authorized, redirect to not-authorized page
+          navigate('/not-authorized');
         } else {
           toast.error('Failed to load artists or authentication status.');
         }

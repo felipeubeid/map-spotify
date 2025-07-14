@@ -17,7 +17,7 @@ const Hero = () => {
         <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in-up">
         <a
         href="http://127.0.0.1:5001"
-        className="px-8 py-4 bg-green text-background font-semibold rounded-full hover:bg-green/90 transition-all duration-300 transform hover:scale-105 hover:shadow-lg inline-block text-center">
+        className="px-8 py-4 bg-green text-background font-semibold rounded-full hover:bg-green/90 transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-center">
           Log In with Spotify
         </a>
         </div>

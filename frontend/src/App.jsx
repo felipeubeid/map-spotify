@@ -3,6 +3,7 @@ import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider} f
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import MapPage from "./pages/MapPage";
+import NotAuthorized from './pages/NotAuthorized';
 import { ToastContainer } from 'react-toastify'
 import 'leaflet/dist/leaflet.css';
 
@@ -15,6 +16,7 @@ const App = () => {
         <Route index element={<Index />} />
         <Route path="map" element={<MapPage />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="not-authorized" element={<NotAuthorized />} />
       </Route>
     )
   )

@@ -2,6 +2,7 @@ from flask import Blueprint, session, redirect, jsonify
 from spotify_auth import create_spotify
 from get_location import get_artist_location
 from flask_cors import CORS
+from spotipy.exceptions import SpotifyException
 
 top_artists_bp = Blueprint('top_artists', __name__)
 
@@ -14,6 +15,16 @@ def get_top_artists():
     token_info = cache_handler.get_cached_token()
     if not sp_oauth.validate_token(token_info):
         return jsonify({'error': 'Unauthorized'}), 401
+    
+    # Check if the user is authenticated
+    try:
+        sp.current_user()
+    except SpotifyException as e:
+        session.clear() # Clear the session if the user is not authorized
+        if e.http_status == 403: 
+            return jsonify({'error': 'Not authorized'}), 403
+        else:
+            raise
     
     # If authenticated, fetch the user's top artists
     results = sp.current_user_top_artists(limit=20)
