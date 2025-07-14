@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #121212;
+    --foreground: #ffffff;
+    --accent: #1ed760;
+  }
+  body {
+    font-family: sans-serif;
+  }
+  html {
+    scroll-behavior: smooth;
+  }  
+}
