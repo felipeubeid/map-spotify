@@ -2,7 +2,8 @@ import React from 'react'
 
 const Hero = () => {
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-background to-muted/70">
+    <section className="hero-background relative min-h-screen flex items-center justify-center overflow-hidden">
+     {/* <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-background to-muted/70 "> */}
       <div className="relative z-10 text-center px-6 max-w-4xl mx-auto">
         <h1 className="text-6xl md:text-8xl font-bold mb-6 animate-fade-in-up">
           Map Spotify
@@ -21,7 +22,7 @@ const Hero = () => {
         </a>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
