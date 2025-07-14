@@ -3,7 +3,7 @@ import { TbMoodSad } from "react-icons/tb";
 
 const NotAuthorized = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
+    <div className="min-h-screen flex items-center justify-center bg-background px-8 sm:px-6">
       <div className="text-center">
         <TbMoodSad className="text-5xl text-foreground mb-4 block mx-auto" />
         <h1 className="text-4xl text-foreground font-semibold mb-4">Thanks for your interest!</h1>
