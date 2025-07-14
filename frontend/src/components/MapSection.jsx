@@ -36,16 +36,16 @@ const MapSection = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center py-20">
+      <div className="flex items-center justify-center h-screen">
         <Loader className="animate-spin h-8 w-8" />
       </div>
     );
   }
 
   return (
-    <section className="relative min-h-screen flex overflow-hidden hero-background pt-24">
+    <section className="relative min-h-screen flex flex-col overflow-hidden hero-background pt-20">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
+        <div className="text-center mb-10">
           <h2 className="text-4xl md:text-4xl font-bold mb-4 text-gradient">Your Spotify on a Map</h2>
           <p className="text-muted-foreground text-md">
             Explore the global roots of your favorite artists
