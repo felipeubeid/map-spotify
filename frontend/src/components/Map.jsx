@@ -49,7 +49,8 @@ const Map = ({ artists }) => {
         showCoverageOnHover={false}
         maxClusterRadius={1}
         >
-        {artists.map((artist) => {
+        {(artists || []).map((artist) => {
+          if (!Array.isArray(artist.coordinates) || artist.coordinates.length !== 2) return null;
           const [lat, lng] = artist.coordinates.map(Number);
           return (
             <Marker key={artist.position} position={[lat, lng]} icon={greenIcon}>
@@ -74,7 +75,7 @@ const Map = ({ artists }) => {
                       {artist.name}
                     </a>
                     <div>
-                      {artist.begin_area}, {artist.country}
+                    {artist.begin_area ? artist.begin_area : 'Unknown area'}, {artist.country ? artist.country : 'Unknown country'}
                     </div>
                   </div>
                 </div>

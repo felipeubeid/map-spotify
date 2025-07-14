@@ -31,7 +31,7 @@ const ArtistsTable = ({ artists }) => {
               </td>
             </tr>
           ) : (
-            artists.map((artist, index) => (
+            (artists || []).map((artist, index) => (
               <tr
                 key={artist.position || index}
                 className="hover:bg-accent/20  transition-colors cursor-pointer"
@@ -43,10 +43,10 @@ const ArtistsTable = ({ artists }) => {
                   {artist.name}
                 </td>
                 <td className="py-2 px-3 border-b border-border text-xs sm:text-sm">
-                  {artist.begin_area || "Unknown"}
+                  {artist.begin_area && artist.begin_area.trim() !== "" ? artist.begin_area : "Unknown"}
                 </td>
                 <td className="py-2 px-3 border-b border-border text-xs sm:text-sm">
-                  {artist.country || "Unknown"}
+                  {artist.country && artist.country.trim() !== "" ? artist.country : "Unknown"}
                 </td>
               </tr>
             ))
