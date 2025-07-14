@@ -39,19 +39,28 @@ def get_location_musicbrainz(artist_name):
 
     # Check if the artist has a begin-area or area
     location = None
+    country = None
     # If the artist has a begin-area, use that. Otherwise, use the area
     if 'begin-area' in artist and artist['begin-area']:
         location = artist['begin-area']['name']
-    elif 'area' in artist and artist['area']:
-        location = artist['area']['name']
+    if 'area' in artist and artist['area']:
+        country = artist['area']['name']
     
-    return location
+    return location, country
 
-def get_geo_info(place_name):
+def get_geo_info(place_name, country_name=None):
     geo_url = "https://nominatim.openstreetmap.org/search"
+    if place_name and place_name.strip():
+        query = place_name.strip()
+        if country_name and country_name.strip():
+            query += ", " + country_name.strip()
+    elif country_name and country_name.strip():
+        query = country_name.strip()
+    else:
+        return None
     # Nominatim API endpoint to get coordinates for a place name
     params = {
-        "q": place_name,
+        "q": query,
         "format": "json",
         "limit": 1,
         # addressdetails is set to 1 to get detailed address information
@@ -94,7 +103,7 @@ def get_artist_location(artist_name):
     
     # If not cached, fetch artist location data
     # Get the location of an artist
-    location = get_location_musicbrainz(artist_name)
+    location, country = get_location_musicbrainz(artist_name)
     if not location:
         result = {
             "birthplace": None,
@@ -103,7 +112,7 @@ def get_artist_location(artist_name):
         }
     else:
         # Get the coordinates and country for the location
-        geo_info = get_geo_info(location)
+        geo_info = get_geo_info(location, country)
         if not geo_info:
             result = {
                 "birthplace": location,
