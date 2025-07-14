@@ -1,12 +1,14 @@
 import React from 'react'
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero"; 
+import Features from "../components/Features";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <Hero />
+      <Features />
 
       <footer className="py-8 px-6 border-t border-border">
         <div className="max-w-6xl mx-auto text-center">
