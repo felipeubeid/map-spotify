@@ -37,7 +37,7 @@ Create a ```.env``` file in the backend folder with:
 SPOTIFY_CLIENT_ID=your_spotify_client_id
 SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
 SPOTIFY_REDIRECT_URI=your_spotify_redirect_uri
-WIKIDATA_EMAIL=your_wikidata_email
+WIKIDATA_EMAIL=your_email
 ```
 
 3. Set up frontend (React)
