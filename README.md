@@ -46,7 +46,7 @@ cd frontend
 npm install
 npm run dev
 ```
-Runs on http://127.0.0.1:3000/map
+Runs on http://127.0.0.1:3000 by default
 
 ## License
 
