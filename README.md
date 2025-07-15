@@ -1,4 +1,4 @@
-# Spotify Map
+# Map Spotify
 
 A full-stack application that fetches your top Spotify artists and fetches their birthplaces on an interective world map.
 
