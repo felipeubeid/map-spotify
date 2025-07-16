@@ -25,7 +25,7 @@ def get_top_artists():
             return jsonify({'error': 'Not authorized'}), 403
         else:
             raise
-    
+        
     # If authenticated, fetch the user's top artists
     results = sp.current_user_top_artists(limit=20)
     
